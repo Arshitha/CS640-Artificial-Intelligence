@@ -1,0 +1,241 @@
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title> CS440 Homework Template: HW[x] Student Name [xxx] </title>
+    <style>
+        <!-- body {
+            font-family: 'Trebuchet MS', Verdana;
+        }
+
+        p {
+            font-family: 'Trebuchet MS', Times;
+            margin: 10px 10px 15px 20px;
+        }
+
+        h3 {
+            margin: 5px;
+        }
+
+        h2 {
+            margin: 10px;
+        }
+
+        h1 {
+            margin: 10px 0px 0px 20px;
+        }
+
+        div.main-body {
+            align: center;
+            margin: 30px;
+        }
+
+        hr {
+            margin: 20px 0px 20px 0px;
+        }
+
+        -->
+    </style>
+</head>
+
+<body>
+    <center>
+        <a href="http://www.bu.edu/"><img src="Images/BU_logo.png" width="139" height="120" border="0"></a>
+    </center>
+
+    <h1>Programming Assignment 1</h1>
+    <p>
+        CS 440/640 Programming Assignment 1 <br> Arshitha Basavaraj <br> Swarnim Sinha <br> 02/28/2018
+    </p>
+
+    <div class="main-body">
+        <hr>
+        <h2> Problem Definition </h2>
+        <p>
+            To develoop a neural network to fit linear and non-linear data. First with no hidden layer in the network and next with one hidden layer
+            with varying hidden nodes. The neural network's performance needs to be analzed with different learning rates as well as with different
+            number of hidden nodes in the hidden layer. Also, we are required to discuss the problem of overfitting and fix it using L2 regularization.
+        </p>
+
+        <hr>
+        <h2> Method and Implementation </h2>
+        <p>
+            <br>
+            The Neural Network was implemented in python. The only two libraries that we used were: <br>
+            1) numpy - a powerful library for algebra and using arrays. <br>
+            2) matplotlib - A 2 D plotting library to visualize the data and the results. <br>
+                <h3> Functions used </h3>
+                We were provided with some skeleton functions which we used to implement the Neural Network: <br>
+                1) compute_cost: Compute the error (or cost) for a particular set of theta1 and theta2 (values of the weights)
+                <br>
+                2) predict(): Applies forward propagation to predict the label. 
+                <br>
+                3) fit(): Gradient Descent is used to update the weights (that is, theta1 and theta2 values) in order to minimise the
+                          the cost. Backpropagation and forward propagation are used. 
+                <br>
+                4) plot_decision_boundary(): Plots the decision boundaray after obtaining an optimal set of weights.
+                <br><br>
+                The function involves three functional computations namely - Forward Propagation, Backward Propagation and Update Model using gradients.
+                Forward Propagation is used to take the weights and the bias to calculate the desired output of the function. <br>
+                Backward Propagation is used to find the error between the actual output and the predicted output. <br>
+                We then calculate the gradient and update the weights to get a lower error rate and a higher accuracy. <br>
+        </p>
+
+        <hr>
+        <h2>Experiments</h2>
+        <p> 1. Changing Learning Rate Values:
+            We performed experiments on the non-linear data for seven different learning rates. For lr=0.001 and lr=0.003, accuracy of 96.6% was
+            consistently achieved. For much lower learning rates, that is, lr = 0.0001 and lr=0.0003, accuracy lowered to 93.7% and 94.6% respectively.
+            The reason for this was that the number of iterations (or epochs) weren't insufficient for the cost to be minimised and for it to converge
+            to the local minima. Also, for higher learning rates, that is, lr=0.01 and lr=0.03, accuracy kept varying for each iteration. This happened
+            because the instead of converging to the global minima of the cost function the algorithm kept oscillating around the global minima
+            causing it give varying accuracies at each iteration. This was true for the real world data of digit recognition as well.</p>
+
+        <p> 2. Changing Number of nodes in the hidden layer. 
+            We used the non-linear data to understand the effects of changing the number of nodes in the hidden layer. We varied the number of hidden
+            nodes on the non-linear data from 4 to 50. As the number of nodes increased above 20, overfitting could be clearly observed in the resulting
+            decision boundary. This was true for the real world data of digit recognition as well. </p> 
+
+
+        <p>
+            For the purpose of evaluation, we used accuracy as well as the confusion matrix. The functions to evaluate our model was provided in the skeleton
+            code. The cost function (compute_cost) gave us the cost of using a particular set of weights (theta1 and theta2). Weights were updated until
+            the cost was minimised. 
+        </p>
+
+
+        <hr>
+        <h2> Results</h2>
+
+        <p>
+            <table>
+                <tbody>
+                    <tr>
+                        <td colspan="3">
+                            <center>
+                                <h3>Results</h3></center>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> Trial </td>
+                        <td> Source Image </td>
+                        <td> Result Image</td>
+                    </tr>
+                    <tr>
+                        <td> Logistic Regression with 0 hidden layers (Linear Data)</td>
+                        <td> <img src="Images/0Hidden/Linear/1.png" width="500" height="300"> </td>
+                        <td> <img src="Images/0Hidden/Linear/2.png" width="500" height="300"> </td>
+                    </tr>
+                    <tr>
+                        <td> Logistic Regression with 0 hidden layers (Non-linear Data)</td>
+                        <td> <img src="Images/0Hidden/NonLinear/1.png" width="500" height="300"> </td>
+                        <td> <img src="Images/0Hidden/NonLinear/2.png" width="500" height="300"> </td>
+                    </tr>
+                    <tr>
+                        <td> Logistic Regression with 1 hidden layer (Linear)</td>
+                        <td> <img src="Images/1Hidden/Linear/1.png" width="500" height="300"> </td>
+                        <td> <img src="Images/1Hidden/Linear/2.png" width="500" height="300"> </td>
+                    </tr>
+                    <tr>
+                        <td> Logistic Regression with 1 hidden layer (Non-linear)</td>
+                        <td> <img src="Images/1Hidden/NonLinear/1.png" width="500" height="300"> </td>
+                        <td> <img src="Images/1Hidden/NonLinear/2.png" width="500" height="300"> </td>
+                    </tr>
+                    <tr>
+                        <td> Learning Rate: lr=0.0001</td>
+                        <td> <img src="Images/LR0_0001/1.png" width="500" height="300""> </td>
+                        <td> <img src="Images/LR0_0001/2.png" width="500" height="300""> </td>
+                    </tr>
+                    <tr>
+                        <td> Learning Rate: lr=0.0003</td>
+                        <td> <img src="Images/LR0_0003/1.png" width="500" height="300""> </td>
+                        <td> <img src="Images/LR0_0003/2.png" width="500" height="300""> </td>
+                    </tr>
+                    <tr>
+                        <td> Learning Rate: lr=0.001</td>
+                        <td> <img src="Images/LR0_001/1.png" width="500" height="300""> </td>
+                        <td> <img src="Images/LR0_001/2.png" width="500" height="300""> </td>
+                    </tr>
+                    <tr>
+                        <td> Learning Rate: lr=0.003</td>
+                        <td> <img src="Images/LR0_003/1.png" width="500" height="300""> </td>
+                        <td> <img src="Images/LR0_003/2.png" width="500" height="300""> </td>
+                    </tr>
+                    <tr>
+                        <td> Learning Rate: lr=0.01</td>
+                        <td> <img src="Images/LR0_01/1.png" width="500" height="300""> </td>
+                        <td> <img src="Images/LR0_01/2.png" width="500" height="300""> </td>
+                    </tr>
+                    <tr>
+                        <td> Learning Rate: lr=0.03</td>
+                        <td> <img src="Images/LR0_03/1.png" width="500" height="300""> </td>
+                        <td> <img src="Images/LR0_03/2.png" width="500" height="300""> </td>
+                    </tr>
+                    <tr>
+                        <td> Learning Rate: lr=0.05</td>
+                        <td> <img src="Images/LR0_05/1.png" width="500" height="300"> </td>
+                        <td> <img src="Images/LR0_05/2.png" width="500" height="300"> </td>
+                    </tr>
+                    <tr>
+                        <td> Real World Example </td>
+                        <td> <img src="Images/RealWorld/1.png" width="500" height="300"> </td>
+                        <td> <img src="Images/RealWorld/2.png" width="500" height="300"> </td>
+                    </tr>
+                </tbody>
+            </table>
+        </p>
+
+
+
+        <hr>
+        <h2> Discussion </h2>
+
+        <ul>
+            <li>The Neural Network implemented by us is reliable as seen from the images above and can also be used to solve real world problems (identifying numbers from handwritten digits). </li>
+            <li>Via our experiments, we were able to show how different learning rates affect the classifier. Having a really low learning rate results in slower computations while having a higher one, results in inaccurate predictions</li>
+            <li>In our experiment, we used logistic regression with 0 hidden layers which gave a straight line as a classifier which did not turn out to be the best classifier specially when the data wasn't linear. </li>
+            <li>Using one hidden layer gave us a better classifier with much higher accuracy. However, increasing the number of nodes to more than 20 in the hidden layer caused a problem - overfitting. The accuracy of the data on the training  set was high,
+            but the accuracy on the test data reduced. <br>
+            <li> The problem of overfitting: In the case of overfitting, the cost function is almost or equal to zero because it passes through every data point in the training set 
+            but that alone doesn’t make it a good model for the problem. It needs to fit for the test data as well which isn't the case. 
+            When we a lot more features than training examples, overfitting becomes a problem because we are taking into account all of the features while accounting for the hypothesis.
+            </li>
+            To solve overfitting, we can use either of the methods: <br>
+            <ul>
+                <li> Cross-Validation: Split the data into training to generate multiple train-test splits and then use these splits to evaluate the model.</li>
+                <li> Regularization: In this method, we penalize large coefficients in order to avoid overfitting.</li>
+                <li> Early Stopping : In this method, we stop training before completing the entire evaluation. Up until a certain number of iterations, the iterations improve the model.
+                     We stop the classifier from learning before it reaches this stage
+        </ul>
+        <p></p>
+
+        <hr>
+        <h2> Conclusions </h2>
+            We successfully implemented a Neural network with both zero hidden layer and one hidden layer and trained both linear and non-linear data.
+            We found the limitations of a Neural Network with zero hidden Layers and overcame them using a hidden layer.
+            We also observed that by changing the learning rate, the accuracy of the model varied. For the non-linear data, we found 0.003 learning rate
+            to give maximum accuracy of 97%/
+            We observed how the performance of the Neural network improved when we increased the number of nodes in the hidden layer but after
+            a certain stage, it caused overfitting.
+            We also faced the issue of overfitting and solved it using regularization.
+            We then used our model to train real life examples and built a classifier that allowed us to recognize handwritten digits.
+        <hr>
+        <h2> Credits and Bibliography </h2>
+        <p>
+            https://www.coursera.org/learn/machine-learning/ - 02/27/2018<br>
+        </p>
+
+        <p>
+            Credits for discussions: <br>
+            Swarnim Sinha <br>
+        </p>
+        <hr>
+    </div>
+
+
+
+
+
+</body>
+
+</html>
